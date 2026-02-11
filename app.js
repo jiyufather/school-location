@@ -44,26 +44,25 @@ const circleLayer = L.layerGroup().addTo(map);
 
   const iconBranch = L.divIcon({
     className: "adot-branch-icon",
-    html: '<div style="width:14px;height:14px;border-radius:999px;background:#F58221;box-shadow:0 0 0 6px rgba(245,130,33,.20),0 10px 24px rgba(245,130,33,.25);border:1px solid rgba(255,255,255,.55)"></div>',
-    iconSize: [14,14],
-    iconAnchor: [7,7]
+    html: `<div class="branchLogo"><img src="assets/adot_logo.png" alt="A.DOT" /></div>`,
+    iconSize: [34,34],
+    iconAnchor: [17,17]
   });
 
   const iconBranchSelected = L.divIcon({
     className: "adot-branch-icon adot-branch-icon-selected",
-    html: '<div style="width:24px;height:24px;border-radius:999px;background:#F58221;box-shadow:0 0 0 7px rgba(245,130,33,.22),0 12px 30px rgba(245,130,33,.30);border:1px solid rgba(255,255,255,.70)"></div>',
-    iconSize: [24,24],
-    iconAnchor: [12,12]
+    html: `<div class="branchLogo branchLogoSelected"><img src="assets/adot_logo.png" alt="A.DOT" /></div>`,
+    iconSize: [44,44],
+    iconAnchor: [22,22]
   });
 
-
-  function iconSchool(type){
+function iconSchool(type){
     const color = type === "고등학교" ? "#3aa0ff" : "#34d399";
     return L.divIcon({
       className: "adot-school-icon",
-      html: `<div style="width:12px;height:12px;border-radius:999px;background:${color};box-shadow:0 0 0 5px rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.55)"></div>`,
-      iconSize: [12,12],
-      iconAnchor: [6,6]
+      html: `<div style="width:16px;height:16px;border-radius:999px;background:${color};box-shadow:0 0 0 7px rgba(0,0,0,.20),0 0 0 5px rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.70)"></div>`,
+      iconSize: [16,16],
+      iconAnchor: [8,8]
     });
   }
 
@@ -71,9 +70,9 @@ const circleLayer = L.layerGroup().addTo(map);
     const color = type === "고등학교" ? "#3aa0ff" : "#34d399";
     return L.divIcon({
       className: "adot-school-icon adot-school-icon-selected",
-      html: `<div style="width:24px;height:24px;border-radius:999px;background:${color};box-shadow:0 0 0 7px rgba(245,130,33,.18), 0 0 18px rgba(245,130,33,.55);border:1px solid rgba(255,255,255,.70)"></div>`,
-      iconSize: [24,24],
-      iconAnchor: [12,12]
+      html: `<div style="width:32px;height:32px;border-radius:999px;background:${color};box-shadow:0 0 0 9px rgba(245,130,33,.20), 0 0 22px rgba(245,130,33,.60);border:1px solid rgba(255,255,255,.80)"></div>`,
+      iconSize: [32,32],
+      iconAnchor: [16,16]
     });
   }
 
@@ -107,7 +106,7 @@ const circleLayer = L.layerGroup().addTo(map);
   function branchPopupHtml(b){
     return `
       <div style="font-family:Pretendard, system-ui; min-width:220px;">
-        <div style="font-weight:800; margin-bottom:4px;">${escapeHtml(b.name)}</div>
+        <div style="font-weight:800; margin-bottom:4px; color:#fff;">${escapeHtml(b.name)}</div>
         <div style="font-size:12px; color:rgba(255,255,255,.75); margin-bottom:8px;">
           ${escapeHtml(b.address||"")}
         </div>
@@ -203,7 +202,7 @@ const circleLayer = L.layerGroup().addTo(map);
     const home = s.homepage ? `<a href="${s.homepage}" target="_blank" rel="noopener" class="btn-link">바로가기</a>` : `<span class="btn-link is-disabled">없음</span>`;
     return `
       <div style="font-family:Pretendard, system-ui; min-width:220px;">
-        <div style="font-weight:800; margin-bottom:4px;">${escapeHtml(s.name)}</div>
+        <div style="font-weight:800; margin-bottom:4px; color:#fff;">${escapeHtml(s.name)}</div>
         <div style="color:rgba(255,255,255,.75); font-size:12px; margin-bottom:8px;">
           ${escapeHtml(s.type)} · ${fmtKm(km)}
         </div>

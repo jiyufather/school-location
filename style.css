@@ -170,9 +170,14 @@ body{
   padding:11px 12px;
   border-radius:14px;
   border:1px solid var(--line);
-  background: rgba(255,255,255,.08);
-  color: #0b0b0b; /* requested earlier: readable text in dropdown */
+  background: #ffffff;
+  color: #111111;
   outline:none;
+}
+
+.select option{
+  background:#ffffff;
+  color:#111111;
 }
 .select:focus{ border-color: rgba(245,130,33,.55); box-shadow: 0 0 0 4px rgba(245,130,33,.10); }
 
@@ -329,6 +334,36 @@ body{
   .global-search{ min-width: 0; }
 }
 
+
+
+
+/* Branch marker (logo) */
+.adot-branch-icon{
+  background: transparent;
+  border: none;
+}
+.adot-branch-icon .branchLogo{
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.94);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border: 1px solid rgba(255,255,255,.70);
+  box-shadow: 0 0 0 7px rgba(245,130,33,.18), 0 14px 28px rgba(0,0,0,.40);
+}
+.adot-branch-icon .branchLogo img{
+  width: 72%;
+  height: 72%;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 10px rgba(0,0,0,.18));
+}
+.adot-branch-icon-selected .branchLogoSelected{
+  width: 44px;
+  height: 44px;
+  box-shadow: 0 0 0 9px rgba(245,130,33,.22), 0 18px 38px rgba(0,0,0,.48);
+}
 
 /* Leaflet popup (dark, premium) */
 .leaflet-popup-content-wrapper{
