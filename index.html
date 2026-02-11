@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>A.DOT 주변 학교 찾기</title>
+
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/variable/pretendardvariable.css">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
+
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">A.</div>
+      <div class="brand-text">
+        <div class="brand-title">A.DOT 주변 학교 찾기</div>
+        <div class="brand-sub">지점 반경 내 중·고등학교를 거리순으로 확인하세요</div>
+      </div>
+    </div>
+
+    <div class="global-search">
+      <div class="search-label">학교로 지점 찾기</div>
+      <div class="searchbox">
+        <input id="schoolSearch" type="text" placeholder="학교명을 입력하세요 (예: 대일고, 반포중)" autocomplete="off"/>
+        <div id="schoolSuggest" class="suggest hidden"></div>
+      </div>
+    </div>
+
+    <button id="homeBtn" class="home-btn" type="button" aria-label="홈으로">
+      <span class="home-ic">⌂</span>
+      <span class="home-tx">홈</span>
+    </button>
+
+  </header>
+
+  <div class="shell">
+    <aside class="panel">
+      <section class="card">
+        <div class="card-title">지점 선택</div>
+
+        <label class="field">
+          <span class="field-label">에이닷 지점</span>
+          <select id="branchSelect" class="select"></select>
+        </label>
+
+        <div class="seg-wrap">
+          <div class="seg-label">반경</div>
+          <div class="seg" role="tablist" aria-label="반경 선택">
+            <button class="seg-btn" data-radius="1" type="button">1km</button>
+            <button class="seg-btn is-active" data-radius="3" type="button">3km</button>
+            <button class="seg-btn" data-radius="5" type="button">5km</button>
+          </div>
+        </div>
+
+        <div class="tabs">
+          <button class="tab is-active" data-type="all" type="button">전체</button>
+          <button class="tab" data-type="고등학교" type="button">고등학교</button>
+          <button class="tab" data-type="중학교" type="button">중학교</button>
+        </div>
+
+        <div class="meta-row">
+          <div class="pill" id="pillBranch">지점을 선택해 주세요</div>
+          <div class="pill pill-muted" id="pillAddress">—</div>
+        </div>
+      </section>
+
+      <section class="card card-summary">
+        <div class="card-title">요약</div>
+        <div class="kpis">
+          <div class="kpi">
+            <div class="kpi-label">반경 내 학교 수</div>
+            <div class="kpi-value" id="kpiCount">—</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-label">학생수 합계(1~3)</div>
+            <div class="kpi-value" id="kpiStudents">—</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-label">가장 가까운 학교</div>
+            <div class="kpi-value" id="kpiNearest">—</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card card-grow">
+        <div class="card-title">반경 내 학교 (거리순)</div>
+        <div class="table-wrap">
+          <table class="table">
+            <thead>
+              <tr>
+                <th style="width:56px;">#</th>
+                <th>학교</th>
+                <th style="width:86px;">거리</th>
+                <th style="width:72px;">1학년</th>
+                <th style="width:72px;">2학년</th>
+                <th style="width:72px;">3학년</th>
+                <th style="width:74px;">홈</th>
+              </tr>
+            </thead>
+            <tbody id="resultBody">
+              <tr><td colspan="7" class="empty">지점을 선택하면 결과가 표시됩니다.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="footnote">
+        <div class="legend">
+          <span class="dot dot-branch"></span> 지점
+          <span class="dot dot-hs"></span> 고등학교
+          <span class="dot dot-ms"></span> 중학교
+        </div>
+        <div class="small">지도는 OpenStreetMap 기반이며, 리스트는 거리(직선거리) 기준입니다.</div>
+      </section>
+    </aside>
+
+    <main class="mapwrap">
+      <div id="map"></div>
+      <div class="map-overlay" id="nearBranchBox" aria-live="polite"></div>
+    </main>
+  </div>
+
+  <script src="./data.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
