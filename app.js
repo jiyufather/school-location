@@ -192,7 +192,7 @@ function iconSchool(type){
   }
 
   function clearResults(){
-    resultBody.innerHTML = '<tr><td colspan="7" class="empty">지점을 선택하거나 학교를 검색하면 결과가 표시됩니다.</td></tr>';
+    resultBody.innerHTML = '<tr><td colspan="8" class="empty">지점을 선택하거나 학교를 검색하면 결과가 표시됩니다.</td></tr>';
     kpiCount.textContent = "—";
     kpiStudents.textContent = "—";
     kpiNearest.textContent = "—";
@@ -204,7 +204,7 @@ function iconSchool(type){
       <div style="font-family:Pretendard, system-ui; min-width:220px;">
         <div style="font-weight:800; margin-bottom:4px; color:#fff;">${escapeHtml(s.name)}</div>
         <div style="color:rgba(255,255,255,.75); font-size:12px; margin-bottom:8px;">
-          ${escapeHtml(s.type)} · ${fmtKm(km)}
+          ${escapeHtml(s.type)}${s.attr ? " · " + escapeHtml(s.attr) : ""} · ${fmtKm(km)}
         </div>
         <div style="font-size:12px; margin-bottom:8px; line-height:1.35;">
           1학년 ${fmtInt(s.g1)} · 2학년 ${fmtInt(s.g2)} · 3학년 ${fmtInt(s.g3)}
@@ -296,7 +296,7 @@ function iconSchool(type){
 
     // Table
     if(!within.length){
-      resultBody.innerHTML = '<tr><td colspan="7" class="empty">선택한 조건에서 반경 내 학교가 없습니다.</td></tr>';
+      resultBody.innerHTML = '<tr><td colspan="8" class="empty">선택한 조건에서 반경 내 학교가 없습니다.</td></tr>';
       return;
     }
 
@@ -320,6 +320,7 @@ function iconSchool(type){
             ${escapeHtml(s.address||"")}
           </div>
         </td>
+        <td style="white-space:nowrap;">${escapeHtml(s.attr || "")}</td>
         <td style="white-space:nowrap;">${fmtKm(s.km)}</td>
         <td>${fmtInt(s.g1||0)}</td>
         <td>${fmtInt(s.g2||0)}</td>

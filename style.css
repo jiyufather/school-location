@@ -140,8 +140,9 @@ body{
 }
 .card-grow{ flex:1; min-height:0; display:flex; flex-direction:column; }
 .table-wrap{ flex:1; display:flex;
-  flex-direction:column;
-  overflow:hidden; border-radius:14px; border:1px solid var(--line); background: rgba(0,0,0,.10); }
+    overflow:auto;
+  -webkit-overflow-scrolling: touch;
+ border-radius:14px; border:1px solid var(--line); background: rgba(0,0,0,.10); }
 .table{
   width:100%;
   border-collapse:collapse;
